@@ -2,27 +2,42 @@ export default function WalletAnalysis() {
   const dashboardList = [
     { 
       label: "总收益", 
-      value: <span className="text-[#FF5252]">-20%</span>
+      value: <div className="flex gap-[12px]">
+      <span className="text-[#52FF63]">+15%</span>
+      |
+      <span className="text-[#52FF63]">+3.87 ETH</span>
+    </div>
     },
     { 
       label: "最大盈利标的", 
-      value: <>BTC/USDT <span className="text-[#52FF63]">(+15%)</span></>
+      value: <div className="flex gap-[12px]">
+        <span >TRUMP</span>
+        |
+        <span className="text-[#52FF63]">+25%</span>
+        
+      </div>
     },
     { 
       label: "最大亏损标的", 
-      value: <>ETH/USDT <span className="text-[#FF5252]">(-25%)</span></>
+      value: <div className="flex gap-[12px]">
+      <span >AI16Z</span>
+      |
+      <span className="text-[#FF5252]">-3.87 SOL</span>
+
+    </div>
     },
     { 
       label: "平均亏损", 
-      value: <span className="text-[#FF5252]">-3.5%</span>
+      value: 
+      <span className="text-[#FF5252]">-3.87 ETH</span>
     },
     { 
       label: "最大亏损倍数标的", 
-      value: <>DOGE/USDT <span className="text-[#FF5252]">(10x)</span></>
+      value: <span className="text-[#FF5252]">-99%</span>
     },
     { 
       label: "最大倍数标的", 
-      value: <>SOL/USDT <span className="text-[#FF5252]">(20x)</span></>
+      value: <><span className="text-[#52FF63]">dreams</span></>
     },
   ];
 
