@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+}
+
+body {
+  min-height: 100vh;
+  background-color: #000000;
+  background-image: url("/bg.png");
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+}
