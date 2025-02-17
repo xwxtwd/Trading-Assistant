@@ -37,19 +37,23 @@ export default function WalletAnalysis() {
       },
       {
         label: "最大盈利标的",
-        value: <div className="flex gap-[12px]">
-          <span>{data?.trade_data?.max_profit_token}</span>
-          |
-          <span className="text-[#52FF63]">+{data?.trade_data?.max_profit_ratio}</span>
-        </div>
+        value: data?.trade_data?.max_profit_token ? (
+          <div className="flex gap-[12px]">
+            <span>{data?.trade_data?.max_profit_token}</span>
+            |
+            <span className="text-[#52FF63]">+{data?.trade_data?.max_profit_ratio}</span>
+          </div>
+        ) : <span>无</span>
       },
       {
-        label: "最大亏损标的",
-        value: <div className="flex gap-[12px]">
-          <span>{data?.trade_data?.max_loss_token}</span>
-          |
-          <span className="text-[#FF5252]">{data?.trade_data?.max_loss_ratio}</span>
-        </div>
+        label: "最大亏损标的", 
+        value: data?.trade_data?.max_loss_token ? (
+          <div className="flex gap-[12px]">
+            <span>{data?.trade_data?.max_loss_token}</span>
+            |
+            <span className="text-[#FF5252]">{data?.trade_data?.max_loss_ratio}</span>
+          </div>
+        ) : <span>无</span>
       },
       {
         label: "平均亏损",
