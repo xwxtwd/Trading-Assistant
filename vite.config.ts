@@ -9,4 +9,14 @@ export default defineConfig({
 
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      '/backend-api': {
+        target: 'https://peace3.3bodylabs.com',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/backend-api/, '')
+      }
+    }
+  }
 })

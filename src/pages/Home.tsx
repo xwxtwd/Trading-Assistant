@@ -12,14 +12,9 @@ export default function Home() {
     if (!address) {
       return;
     }
-    setIsLoading(true)
-    // navigate(`/detail/${address}`);
+    navigate(`/detail/${address}`);
   };
-  const handleComplete = () => {
-    setTimeout(() => {
-      navigate(`/detail/${address}`);
-    }, 500);
-  };
+
   return <>
     <div
       className="my-[175px] mx-auto w-[1096px] pt-[78px] px-[88px] h-[450px] shrink-0 bg-[#000000] bg-[url('/content-bg.png')] bg-cover bg-center text-center"
@@ -34,7 +29,6 @@ export default function Home() {
                 "Based on your recent transactions, AI ",
                 "suggests the following"
               ]}
-              onComplete={handleComplete}
               completeDelay={0}
             />
           </div>
