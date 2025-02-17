@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "include": [
+    "/backend-api/*"
+  ],
+  "exclude": [
+    "/_*",
+    "/static/*",
+    "/*.ico",
+    "/*.png",
+    "/*.svg"
+  ]
+}
