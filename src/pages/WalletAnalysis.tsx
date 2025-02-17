@@ -132,7 +132,7 @@ export default function WalletAnalysis() {
             <div className="flex pt-[28px] pb-[40px] pl-[48px] pr-[48px] flex-col gap-[32px] self-stretch rounded-[18px] bg-[rgba(255,255,255,0.05)]">
               <div className="flex w-[824px] justify-between items-center">
                 <div className="text-[#FFF] font-Poppins text-[24px] font-not-italic font-500 leading-[32px] capitalize">
-                  Dashboard (Last Week)
+                  Dashboard (Recent 7 Days)
                 </div>
 
               </div>
