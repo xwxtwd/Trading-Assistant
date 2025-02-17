@@ -11,7 +11,7 @@ export default function WalletAnalysis() {
 
   const { data, loading: isLoading, error } = useRequest(async () => {
     const res = await axios.get(`/backend-api/assistant/stat?address=${address}`);
-    return res.data;
+    return res.data.data;
   }, {
     ready: !!address,
     refreshDeps: [address],
