@@ -10,12 +10,21 @@ export default function WalletAnalysis() {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   const { data, loading: isLoading, error } = useRequest(async () => {
-    const res = await axios.get(`/backend-api/assistant/stat?address=${address}`);
-    return res.data.data;
+    try {
+      const res = await axios.get(`/backend-api/assistant/stat?address=${address}`);
+      if (res.data.status !== 0) {
+        throw (res.data.msg);
+      }
+      return res.data.data;
+    } catch (err) {
+      throw err;
+    }
   }, {
     ready: !!address,
     refreshDeps: [address],
   });
+
+  
 
   const dashboardList = useMemo(() => {
     if (error) {
@@ -46,7 +55,7 @@ export default function WalletAnalysis() {
         ) : <span>无</span>
       },
       {
-        label: "最大亏损标的", 
+        label: "最大亏损标的",
         value: data?.trade_data?.max_loss_token ? (
           <div className="flex gap-[12px]">
             <span>{data?.trade_data?.max_loss_token}</span>
@@ -76,11 +85,22 @@ export default function WalletAnalysis() {
 
   const highlightText = (text: string) => {
     if (!text) return '';
-    return text.replace(/([+-]?\d+\.?\d*%?|[""][^""]*[""]|[''][^'']*[''])/g, match => 
+    return text.replace(/([+-]?\d+\.?\d*%?|[""][^""]*[""]|[''][^'']*[''])/g, match =>
       `<span class="text-[#52FF63]">${match}</span>`
     );
   };
+  if (error && isTypingComplete) {
+    return (
+      <div
+        className=" my-[175px] mx-auto w-[1096px] pt-[78px] px-[88px] h-[450px] shrink-0 bg-[#000000] bg-[url('/content-bg.png')] bg-cover bg-center text-center"
+      >
+        <div className="w-[708px] text-[#F5F5F5] text-center font-Poppins text-[32px] font-not-italic font-400 leading-[154%] mx-auto">
 
+          <div className="text-[#FF5252]">{error?.toString()}</div>
+        </div>
+      </div>
+    );
+  }
   return <>
     {
       isLoading || !isTypingComplete ? (
