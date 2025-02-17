@@ -1,19 +1,38 @@
 import { useState } from 'react';
 import { TypeWriter } from '../components/TypeWriter';
 import { useNavigate } from 'react-router';
+import { Toast } from '../components/Toast';
 
 export default function Home() {
   const [address, setAddress] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+
+  const isValidEOA = (address: string): boolean => {
+    // 检查地址是否符合以太坊地址格式（0x 开头的 42 位十六进制字符串）
+    return /^0x[a-fA-F0-9]{40}$/.test(address);
+  };
 
   const handleCheck = () => {
     if (!address) {
       return;
     }
+    
+    if (!isValidEOA(address)) {
+      setErrorMessage('请输入有效的钱包地址');
+      return;
+    }
+    
     navigate(`/detail/${address}`);
   };
 
   return <>
+    {errorMessage && (
+      <Toast 
+        message={errorMessage} 
+        onClose={() => setErrorMessage('')} 
+      />
+    )}
     <div
       className="my-[175px] mx-auto w-[1096px] pt-[78px] px-[88px] h-[450px] shrink-0 bg-[#000000] bg-[url('/content-bg.png')] bg-cover bg-center text-center"
     >
